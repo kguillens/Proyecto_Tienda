@@ -1,0 +1,37 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 5, 2025, 11:14:27 AM
+    Author     : guillen.kenneth
+*/
+
+.producto img {
+    width: 50%;
+    height: 400px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav-menu-item {
+    list-style: none;
+}
+
+.nav-menu-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.nav-menu-link:hover {
+    text-decoration: underline;
+}
