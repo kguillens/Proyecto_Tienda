@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .producto img {
     width: 50%;
-    height: 400px;
+    height: 100px;
     object-fit: contain;
     display: block;
     margin-bottom: 10px;
