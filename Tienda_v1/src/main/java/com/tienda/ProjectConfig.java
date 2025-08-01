@@ -49,12 +49,12 @@ public class ProjectConfig implements WebMvcConfigurer {
     //Bean para poder acceder a los Messages.properties en código...
     @Bean("messageSource")
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource= new ResourceBundleMessageSource();
         messageSource.setBasenames("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-    
+
     /*Los siguientes métodos son para implementar el tema de seguridad dentro del proyecto*/
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -68,26 +68,32 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/errores/**",
-                        "/carrito/**", "/pruebas/**", "/reportes/**",
-                        "/registro/**", "/js/**", "/webjars/**").permitAll()
-                .requestMatchers("/producto/nuevo", "/producto/guardar",
-                        "/producto/modificar/**", "/producto/eliminar/**",
-                        "/categoria/nuevo", "/categoria/guardar",
-                        "/categoria/modificar/**", "/categoria/eliminar/**",
-                        "/usuario/nuevo", "/usuario/guardar",
-                        "/usuario/modificar/**", "/usuario/eliminar/**",
-                        "/reportes/**").hasRole("ADMIN")
-                .requestMatchers("/producto/listado",
+                .requestMatchers("/","/index","/errores/**",
+                        "/carrito/**","/pruebas/**","/reportes/**",
+                        "/registro/**","/js/**","/webjars/**")
+                        .permitAll()
+                .requestMatchers(
+                        "/producto/nuevo","/producto/guardar",
+                        "/producto/modificar/**","/producto/eliminar/**",
+                        "/categoria/nuevo","/categoria/guardar",
+                        "/categoria/modificar/**","/categoria/eliminar/**",
+                        "/usuario/nuevo","/usuario/guardar",
+                        "/usuario/modificar/**","/usuario/eliminar/**",
+                        "/reportes/**"
+                ).hasRole("ADMIN")
+                .requestMatchers(
+                        "/producto/listado",
                         "/categoria/listado",
-                        "/usuario/listado").hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers("/facturar/carrito").hasRole("USER"))
-                .formLogin((form) -> form.loginPage("/login").permitAll())
+                        "/usuario/listado"
+                ).hasAnyRole("ADMIN", "VENDEDOR")
+                .requestMatchers("/facturar/carrito")
+                .hasRole("USER")
+                )
+                .formLogin((form) -> form
+                .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
-
         return http.build();
     }
-
     @Autowired
     private UserDetailsService userDetailsService;
 
