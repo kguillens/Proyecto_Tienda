@@ -3,7 +3,6 @@ package com.tienda.service;
 import jakarta.mail.MessagingException;
 
 /**
- *
  * @author guillen.kenneth
  */
 public interface CorreoService {
